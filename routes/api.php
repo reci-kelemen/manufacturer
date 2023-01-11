@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Buvar;
+use App\Http\Controllers\API\BuvarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,14 +20,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("/manufacturers", function(){
-    $manufacturers = Buvar::all();
-    return response()->json($manufacturers);
-});
+// Route::get("/manufacturers", [BuvarController::class, 'index']);
 
-Route::post("/manufacturers", function(Request $request){
-    $manufacturer = new Buvar();
-    $manufacturer -> fill($request->all());
-    $manufacturer->save();
-    return response()->json($manufacturer, 201);
-});
+// Route::post("/manufacturers", [BuvarController::class, 'store']);
+
+// Route::get("/manufacturers/{id}", [BuvarController::class, 'show']);
+
+// Route::put("/manufacturers/{id}", [BuvarController::class, 'update']);
+
+// Route::patch("/manufacturers/{id}", [BuvarController::class, 'update']);
+
+// Route::delete("/manufacturers/{id}", [BuvarController::class, 'destroy']);
+
+Route::apiResource("/manufacturers", BuvarController::class);
