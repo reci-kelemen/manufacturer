@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Buvar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("/manufacturers", function(){
-    $manufacturers = \App\Models\Buvar::all();
+    $manufacturers = Buvar::all();
     return response()->json($manufacturers);
+});
+
+Route::post("/manufacturers", function(Request $request){
+    $manufacturer = new Buvar();
+    $manufacturer -> fill($request->all());
+    $manufacturer->save();
+    return response()->json($manufacturer, 201);
 });

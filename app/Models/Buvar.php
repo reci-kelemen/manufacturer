@@ -13,4 +13,10 @@ class Buvar extends Model
         'updated_at',
         'created_at'
     ];
+
+    protected $fillable = [
+        'name',
+        'web',
+        'email'
+    ];
 }
