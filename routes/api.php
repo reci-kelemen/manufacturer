@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get("/manufacturers", function(){
+    $manufacturers = \App\Models\Buvar::all();
+    return response()->json($manufacturers);
+});
