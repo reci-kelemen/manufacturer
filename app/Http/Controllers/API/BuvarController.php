@@ -25,7 +25,7 @@ class BuvarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBuvarRequest $request)
     {
         $manufacturer = new Buvar();
         $manufacturer -> fill($request->all());
@@ -55,7 +55,7 @@ class BuvarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBuvarRequest $request, $id)
     {
         $manufacturer = Buvar::find($id);
         if (is_null($manufacturer)){

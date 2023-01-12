@@ -24,7 +24,9 @@ class UpdateBuvarRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "name" => "string|max:255",
+            "web" => "string|max:255",
+            "email" => "string|max:255"
         ];
     }
 }
